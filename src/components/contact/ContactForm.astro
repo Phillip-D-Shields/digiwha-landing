@@ -54,10 +54,15 @@ import { FORM_URL } from "../../config/constants";
 
         <div>
           <button
-            class="bg-primary-600 dark:bg-primary-400 hover:bg-primary-700 dark:hover:bg-primary-300 focus-visible:outline-primary-600 dark:focus-visible:outline-primary-400 dark:text-primary-950 inline-flex items-center justify-center rounded-full border border-transparent px-5 py-3 text-base font-medium text-white transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+            id="submitButton"
+            class="bg-primary-600 dark:bg-primary-400 hover:bg-primary-700 dark:hover:bg-primary-300 focus-visible:outline-primary-600 dark:focus-visible:outline-primary-400 dark:text-primary-950 inline-flex items-center justify-center rounded-full border border-transparent px-5 py-3 text-base font-medium text-white transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
             type="submit"
           >
-            Submit
+            <span id="submitText">Submit</span>
+            <svg id="loadingSpinner" class="hidden animate-spin ml-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
           </button>
         </div>
       </form>
@@ -72,11 +77,29 @@ import { FORM_URL } from "../../config/constants";
   const form = document.getElementById('contactForm') as HTMLFormElement;
   const thankYouMessage = document.getElementById('thankYouMessage') as HTMLDivElement;
   const iframe = document.getElementById('hidden_iframe') as HTMLIFrameElement;
+  const submitButton = document.getElementById('submitButton') as HTMLButtonElement;
+  const submitText = document.getElementById('submitText') as HTMLSpanElement;
+  const loadingSpinner = document.getElementById('loadingSpinner') as HTMLElement;
+
+  // Function to disable submit button and show loading state
+  const setLoadingState = () => {
+    submitButton.disabled = true;
+    submitText.textContent = 'Sending...';
+    loadingSpinner.classList.remove('hidden');
+  };
+
+  // Function to reset submit button state
+  const resetButtonState = () => {
+    submitButton.disabled = false;
+    submitText.textContent = 'Submit';
+    loadingSpinner.classList.add('hidden');
+  };
 
   iframe.addEventListener('load', function() {
-    // show thank you if the form was actually submitted
+    // Only proceed if the form was actually submitted
     if (form.submitted) {
       form.reset();
+      resetButtonState();
       thankYouMessage.classList.remove('hidden');
       setTimeout(() => {
         thankYouMessage.classList.add('hidden');
@@ -86,5 +109,10 @@ import { FORM_URL } from "../../config/constants";
 
   form.addEventListener('submit', function() {
     form.submitted = true;
+    setLoadingState();
   });
+
+  // Reset button state if there's an error or the page is navigated away
+  window.addEventListener('beforeunload', resetButtonState);
+  window.addEventListener('error', resetButtonState);
 </script>
