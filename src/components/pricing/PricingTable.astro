@@ -1,37 +1,106 @@
 ---
 const pricing = [
   {
-    name: 'Basic',
-    description: 'For development, staging, and small production projects.',
-    periodicity: '/month',
-    price: '$10',
-    action: 'Buy Now',
-    features: ['5 Seats', '1,000 Projects', 'Lifetime access', 'Community Support'],
-  },
-  {
-    name: 'Pro',
-    description: 'For high-scale and mission critical projects.',
+    name: 'Starter Landing',
+    description: 'Perfect for small businesses and organizations that need a simple online presence',
+    periodicity: '/one-time',
     isFlagged: true,
-    periodicity: '/month',
-    price: '$25',
-    action: 'Buy Now',
-    features: ['10 Seats', '10,000 Projects', 'Lifetime access', 'Email Support', 'Free updates'],
-  },
-  {
-    name: 'Team',
-    description: 'For teams with more security, support, and performance needs.',
-    periodicity: '',
-    price: 'Custom',
-    action: 'Buy Now',
+    price: '$750 - $1,500',
+    action: 'Enquire Now',
     features: [
-      'Unlimited Seats',
-      'Unlimited Projects',
-      'Lifetime access',
-      'Email and Chat Support',
-      'High-Performance',
-      'Free updates',
+      'Single page design',
+      '3-4 content sections',
+      'Mobile responsive',
+      'SEO',
+      '1 year of hosting',
+      '2 content updates'
     ],
   },
+  {
+    name: 'Multi-Page Essential',
+    description: 'Static multi-page website for established businesses or organiztions that want a unique online presence',
+    periodicity: '/one-time',
+    price: '$2,000 - $3,500',
+    action: 'Enquire Now',
+    features: [
+      'Up to 5 pages',
+      'Custom design or template',
+      'Contact form',
+      'Social media integration',
+      'SEO',
+      '3 rounds of revisions',
+      '1 year of hosting',
+    ],
+  },
+  {
+    name: 'Dynamic CMS Essential',
+    description: 'Content-managed website with Strapi backend, perfect for businesses or organizations that have a blog or content that needs to be updated regularly',
+    periodicity: '/one-time',
+    isFlagged: true,
+    price: '$5,000 - $7,500',
+    action: 'Enquire Now',
+    features: [
+      '5-7 pages',
+      'Strapi CMS integration',
+      'Custom content types',
+      'Admin dashboard',
+      'User management',
+      'Media library',
+      '6 months of support',
+      '1 year of hosting',
+    ],
+  },
+  // {
+  //   name: 'Dynamic CMS Professional',
+  //   description: 'Advanced content-managed solution for complex needs',
+  //   periodicity: '/one-time',
+  //   price: '$7,499',
+  //   action: 'Enquire Now',
+  //   features: [
+  //     'Up to 15 pages',
+  //     'Advanced Strapi setup',
+  //     'Multiple user roles',
+  //     'Custom workflows',
+  //     'Advanced media handling',
+  //     'REST & GraphQL APIs',
+  //     'SSO integration',
+  //     'Advanced analytics',
+  //     'Performance optimization',
+  //     '12 months of support'
+  //   ],
+  // },
+  // {
+  //   name: 'Maintenance Plan',
+  //   description: 'Ongoing website maintenance and updates',
+  //   periodicity: '/month',
+  //   price: '$199',
+  //   action: 'Subscribe Now',
+  //   features: [
+  //     'Monthly content updates',
+  //     'Security patches',
+  //     'Performance monitoring',
+  //     'Weekly backups',
+  //     'Technical support',
+  //     'SEO monitoring',
+  //     'Monthly analytics report',
+  //     '48-hour response time'
+  //   ],
+  // },
+  {
+    name: 'Custom Service',
+    description: 'Have something else in mind?',
+    periodicity: '',
+    price: '',
+    action: 'Contact Us',
+    features: [
+      'Competitive Contract Rates',
+      'Hosting & Domain Setup',
+      'Rebranding & Redesign',
+      'Squarespace & Wordpress Help',
+      'Google Analytics & SEO',
+      'Custom Software Development',
+    ],
+  }
 ];
 ---
 
@@ -73,12 +142,12 @@ const pricing = [
                 ))}
               </ul>
             </div>
-            <a
+            {/* <a
               href="#"
               class="bg-primary-600 dark:bg-primary-400 hover:bg-primary-700 dark:hover:bg-primary-300 focus-visible:outline-primary-600 dark:focus-visible:outline-primary-400 dark:text-primary-950 inline-flex w-full items-center justify-center rounded-full border border-transparent px-5 py-3 text-base font-medium text-white transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
             >
               Buy now
-            </a>
+            </a> */}
           </div>
         ))
       }

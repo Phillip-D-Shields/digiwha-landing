@@ -10,10 +10,12 @@ module.exports = {
       current: 'currentColor',
       transparent: 'transparent',
       white: '#ffffff',
-      primary: colors.stone,
+      primary: colors.green,
     },
     fontFamily: {
-      sans: ['Inter', 'sans-serif'],
+      doto: ['Doto', 'sans-serif'],
+      ubuntu: ['Ubuntu', 'sans-serif'],
+      sans: ['Inter', 'sans-serif' ],
     },
     fontSize: {
       xs: ['0.75rem', '1rem'],

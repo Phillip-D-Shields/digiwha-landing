@@ -1,9 +1,10 @@
 ---
-import '@fontsource/inter/latin-400.css';
-import '@fontsource/inter/latin-500.css';
-import { ViewTransitions } from 'astro:transitions';
-import Footer from '../components/layout/Footer.astro';
-import Header from '../components/layout/Header.astro';
+import "@fontsource/inter/latin-400.css";
+import "@fontsource/inter/latin-500.css";
+import { ViewTransitions } from "astro:transitions";
+import Footer from "../components/layout/Footer.astro";
+import Header from "../components/layout/Header.astro";
+import GoogleTagManager from "../components/layout/GoogleTagManager.astro";
 
 interface Props {
   description: string;
@@ -11,9 +12,10 @@ interface Props {
 }
 
 const { description, title } = Astro.props;
+const GTM_ID = import.meta.env.PUBLIC_GTM_ID;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" x-cloak x-data :class="{ 'dark': $store.theme.isDark }">
   <head>
     <meta charset="utf-8" />
@@ -25,10 +27,17 @@ const { description, title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
     <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Doto:wght@700&family=Ubuntu:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <GoogleTagManager id={GTM_ID} /> 
     <ViewTransitions />
   </head>
   <body
-    class="bg-primary-50 text-primary-950 dark:bg-primary-950 dark:text-primary-200 antialiased transition"
+    class="bg-primary-50 text-primary-950 dark:bg-primary-950 dark:text-primary-200 antialiased transition font-ubuntu"
   >
     <Header />
     <main>
@@ -41,18 +50,21 @@ const { description, title } = Astro.props;
       }
     </style>
     <script>
-      import Alpine from 'alpinejs';
-      import collapse from '@alpinejs/collapse';
+      import Alpine from "alpinejs";
+      import collapse from "@alpinejs/collapse";
 
       Alpine.plugin(collapse);
 
-      Alpine.store('theme', {
+      Alpine.store("theme", {
         init() {
           this.isDark = (() => {
-            if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-              return localStorage.getItem('theme') === 'dark';
+            if (
+              typeof localStorage !== "undefined" &&
+              localStorage.getItem("theme")
+            ) {
+              return localStorage.getItem("theme") === "dark";
             }
-            if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
               return true;
             }
             return false;
@@ -63,7 +75,7 @@ const { description, title } = Astro.props;
 
         toggle() {
           this.isDark = !this.isDark;
-          localStorage.setItem('theme', this.isDark ? 'dark' : 'light');
+          localStorage.setItem("theme", this.isDark ? "dark" : "light");
         },
       });
 
