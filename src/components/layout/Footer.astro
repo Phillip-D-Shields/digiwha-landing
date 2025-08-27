@@ -33,11 +33,11 @@ const bottomLinks = [
         href: '/',
         isExternal: false,
       },
-      // {
-      //   name: 'About',
-      //   href: '/about',
-      //   isExternal: false,
-      // },
+      {
+        name: 'About',
+        href: '/about',
+        isExternal: false,
+      },
       {
         name: 'Pricing',
         href: '/pricing',
@@ -66,6 +66,8 @@ const bottomLinks = [
     ],
   },
 ];
+
+const YEAR = new Date().getFullYear();
 ---
 
 <footer
@@ -78,9 +80,9 @@ const bottomLinks = [
       <div class="flex max-w-sm flex-col items-start gap-6 sm:gap-8">
         <h2 class="text-3xl font-doto font-medium tracking-tight sm:text-4xl">Digiwha Studios</h2>
         <p class="text-primary-950/70 dark:text-primary-200/70 text-base">
-          Digiwha Studios is a digital start up that specializes in web design, development, and even some marketing. If we can't do it, we know someone who can and will happily refer you.
+          Digital marketing specialists for the Tasman region.
         </p>
-        <p class="text-primary-950/70 dark:text-primary-200/70 text-sm">© 2024 Digiwha Studios</p>
+        <p class="text-primary-950/70 dark:text-primary-200/70 text-sm">© {YEAR} Digiwha Studios</p>
       </div>
 
       <!-- Bottom links -->

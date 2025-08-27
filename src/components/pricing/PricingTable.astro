@@ -1,129 +1,132 @@
 ---
 const pricing = [
   {
-    name: 'Starter Landing',
-    description: 'Perfect for small businesses and organizations that need a simple online presence',
-    periodicity: '/one-time',
+    name: 'Starter Package',
+    description: 'Perfect for small businesses ready to establish their digital presence',
+    periodicity: '/month',
+    isFlagged: false,
+    price: '$750',
+    originalPrice: null,
+    action: 'Get Started',
+    features: [
+      'Social media management (2 platforms)',
+      'Monthly content calendar',
+      'Basic Google Ads setup',
+      'Monthly performance report',
+      'Email support',
+      '3-month minimum commitment'
+    ],
+  },
+  {
+    name: 'Growth Package',
+    description: 'Comprehensive digital marketing for growing businesses seeking consistent results',
+    periodicity: '/month',
     isFlagged: true,
-    price: '$750 - $1,500',
-    action: 'Enquire Now',
+    price: '$1,200',
+    originalPrice: '$1,400',
+    badge: 'Most Popular',
+    action: 'Start Growing',
     features: [
-      'Single page design',
-      '3-4 content sections',
-      'Mobile responsive',
-      'SEO',
-      '1 year of hosting',
-      '2 content updates'
+      'Full social media management',
+      'Google or Facebook Ads management',
+      'SEO-optimized content creation',
+      'Email marketing campaigns',
+      'Website maintenance & updates',
+      'Monthly performance reports',
+      'Phone & email support'
     ],
   },
   {
-    name: 'Multi-Page Essential',
-    description: 'Static multi-page website for established businesses or organiztions that want a unique online presence',
-    periodicity: '/one-time',
-    price: '$2,000 - $3,500',
-    action: 'Enquire Now',
+    name: 'Enterprise Package',
+    description: 'Full-service digital marketing solution for established businesses wanting maximum growth',
+    periodicity: '/month',
+    isFlagged: false,
+    price: '$2,000',
+    originalPrice: null,
+    action: 'Scale Up',
     features: [
-      'Up to 5 pages',
-      'Custom design or template',
-      'Contact form',
-      'Social media integration',
-      'SEO',
-      '3 rounds of revisions',
-      '1 year of hosting',
+      'Complete digital marketing strategy',
+      'Multi-platform advertising campaigns',
+      'Advanced analytics & conversion tracking',
+      'Custom landing page creation',
+      'Reputation management',
+      'Dedicated account manager',
+      'Bi-weekly strategy calls',
+      '24/7 priority support'
     ],
   },
   {
-    name: 'Dynamic CMS Essential',
-    description: 'Content-managed website with Strapi backend, perfect for businesses or organizations that have a blog or content that needs to be updated regularly',
-    periodicity: '/one-time',
-    isFlagged: true,
-    price: '$5,000 - $7,500',
-    action: 'Enquire Now',
-    features: [
-      '5-7 pages',
-      'Strapi CMS integration',
-      'Custom content types',
-      'Admin dashboard',
-      'User management',
-      'Media library',
-      '6 months of support',
-      '1 year of hosting',
-    ],
-  },
-  // {
-  //   name: 'Dynamic CMS Professional',
-  //   description: 'Advanced content-managed solution for complex needs',
-  //   periodicity: '/one-time',
-  //   price: '$7,499',
-  //   action: 'Enquire Now',
-  //   features: [
-  //     'Up to 15 pages',
-  //     'Advanced Strapi setup',
-  //     'Multiple user roles',
-  //     'Custom workflows',
-  //     'Advanced media handling',
-  //     'REST & GraphQL APIs',
-  //     'SSO integration',
-  //     'Advanced analytics',
-  //     'Performance optimization',
-  //     '12 months of support'
-  //   ],
-  // },
-  // {
-  //   name: 'Maintenance Plan',
-  //   description: 'Ongoing website maintenance and updates',
-  //   periodicity: '/month',
-  //   price: '$199',
-  //   action: 'Subscribe Now',
-  //   features: [
-  //     'Monthly content updates',
-  //     'Security patches',
-  //     'Performance monitoring',
-  //     'Weekly backups',
-  //     'Technical support',
-  //     'SEO monitoring',
-  //     'Monthly analytics report',
-  //     '48-hour response time'
-  //   ],
-  // },
-  {
-    name: 'Custom Service',
-    description: 'Have something else in mind?',
+    name: 'Custom Solutions',
+    description: 'Tailored digital marketing services for unique business needs',
     periodicity: '',
-    price: '',
+    price: 'Let\'s Talk',
+    originalPrice: null,
     action: 'Contact Us',
     features: [
-      'Competitive Contract Rates',
-      'Hosting & Domain Setup',
-      'Rebranding & Redesign',
-      'Squarespace & Wordpress Help',
-      'Google Analytics & SEO',
-      'Custom Software Development',
+      'Project-based pricing available',
+      'Seasonal campaign management',
+      'Industry-specific strategies',
+      'Multi-location business support',
+      'Enterprise-level reporting',
+      'Custom integrations & automation'
     ],
   }
 ];
 ---
 
+
+
 <section class="py-16 sm:py-20">
   <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-    <div class="-mt-8 grid gap-8 lg:mt-0 lg:grid-cols-3">
+    <!-- Header -->
+    <div class="mx-auto max-w-4xl text-center mb-16">
+      <h2 class="text-3xl font-medium tracking-tight sm:text-6xl">
+        Choose Your Growth Plan
+      </h2>
+      <p class="mt-6 text-lg leading-8 text-primary-950/70 dark:text-primary-200/70">
+        Transparent pricing designed for Motueka and Tasman region businesses. No hidden fees, no long-term contracts.
+      </p>
+    </div>
+
+    <!-- Main Pricing Grid -->
+    <div class="grid gap-8 lg:grid-cols-3 lg:gap-6 mb-12">
       {
-        pricing.map((item) => (
+        pricing.slice(0, 3).map((item) => (
           <div
             class:list={[
-              'relative flex flex-col gap-8 rounded-3xl p-8',
-              item.isFlagged && 'bg-primary-500/10 dark:bg-primary-400/10',
+              'relative flex flex-col gap-8 rounded-3xl p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl',
+              item.isFlagged && 'bg-primary-500/10 dark:bg-primary-400/10 ring-2 ring-primary-500/20',
+              !item.isFlagged && 'ring-1 ring-primary-900/10 dark:ring-primary-300/10'
             ]}
           >
+            {item.badge && (
+              <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-primary-600 dark:bg-primary-400 text-white dark:text-primary-950 px-4 py-1 rounded-full text-sm font-medium">
+                {item.badge}
+              </div>
+            )}
+            
             <div class="flex-1">
-              <h2 class="text-xl font-medium">{item.name}</h2>
-              <p class="mt-4 flex items-baseline">
-                <span class="text-4xl font-medium tracking-tight">{item.price}</span>
+              <h3 class="text-xl font-medium">
+                {item.name}
+              </h3>
+              
+              <div class="mt-4 flex items-baseline gap-2">
+                <span class="text-4xl font-medium tracking-tight">
+                  {item.price}
+                </span>
+                {item.originalPrice && (
+                  <span class="text-lg line-through text-primary-950/50 dark:text-primary-200/50">
+                    {item.originalPrice}
+                  </span>
+                )}
                 <span class="text-primary-950/70 dark:text-primary-200/70 ml-1 text-sm font-medium">
                   {item.periodicity}
                 </span>
+              </div>
+              
+              <p class="text-primary-950/70 dark:text-primary-200/70 mt-6">
+                {item.description}
               </p>
-              <p class="text-primary-950/70 dark:text-primary-200/70 mt-6">{item.description}</p>
 
               <ul role="list" class="mt-6 space-y-6">
                 {item.features.map((feature) => (
@@ -142,15 +145,68 @@ const pricing = [
                 ))}
               </ul>
             </div>
-            {/* <a
+            
+            <a
               href="#"
               class="bg-primary-600 dark:bg-primary-400 hover:bg-primary-700 dark:hover:bg-primary-300 focus-visible:outline-primary-600 dark:focus-visible:outline-primary-400 dark:text-primary-950 inline-flex w-full items-center justify-center rounded-full border border-transparent px-5 py-3 text-base font-medium text-white transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
             >
-              Buy now
-            </a> */}
+              {item.action}
+            </a>
           </div>
         ))
       }
     </div>
+
+    <!-- Custom Solutions Card -->
+    <div class="max-w-2xl mx-auto">
+      {
+        pricing.slice(3).map((item) => (
+          <div class="relative flex flex-col gap-8 rounded-3xl p-8 ring-1 ring-primary-900/10 dark:ring-primary-300/10 transition-all duration-300 hover:shadow-lg text-center">
+            <div class="flex-1">
+              <h3 class="text-3xl font-medium">
+                {item.name}
+              </h3>
+              
+              <div class="mt-4">
+                <span class="text-4xl sm:text-5xl font-medium tracking-tight">
+                  {item.price}
+                </span>
+              </div>
+              
+              <p class="text-primary-950/70 dark:text-primary-200/70 mt-6">
+                {item.description}
+              </p>
+
+              <ul role="list" class="mt-6 space-y-6 max-w-md mx-auto">
+                {item.features.map((feature) => (
+                  <li class="flex gap-3">
+                    <svg
+                      class="text-primary-600 dark:text-primary-400 h-6 w-6 flex-shrink-0"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM11.0026 16L18.0737 8.92893L16.6595 7.51472L11.0026 13.1716L8.17421 10.3431L6.75999 11.7574L11.0026 16Z" />
+                    </svg>
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            
+            <div class="max-w-xs mx-auto w-full">
+              <a
+                href="#"
+                class="bg-primary-600 dark:bg-primary-400 hover:bg-primary-700 dark:hover:bg-primary-300 focus-visible:outline-primary-600 dark:focus-visible:outline-primary-400 dark:text-primary-950 inline-flex w-full items-center justify-center rounded-full border border-transparent px-5 py-3 text-base font-medium text-white transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+              >
+                {item.action}
+              </a>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
   </div>
 </section>

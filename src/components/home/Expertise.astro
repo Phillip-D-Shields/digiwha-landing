@@ -2,76 +2,88 @@
 const features = [
   {
     id: 'expertise-1',
-    name: 'Domain Assistance',
+    name: 'Social Media Management',
     description:
-      'The first step in creating a website is to choose a domain name. It is your internet addres. We can help you find and setup the perfect domain name for your business or organization.',
+      'Comprehensive social media strategy and management across all major platforms. We create engaging content, manage your community, run targeted ad campaigns, and provide detailed analytics to grow your online presence and drive real business results.',
   },
   {
     id: 'expertise-2',
-    name: 'Web & Mobile Design',
+    name: 'Google Ads & PPC',
     description:
-      'Most people will checkout your website on their phone. We make sure your website looks great on all devices, from desktops to tablets to phones.',
+      'Strategic pay-per-click advertising campaigns designed to maximize your ROI. From keyword research and ad creation to landing page optimization and conversion tracking, we ensure every dollar spent drives qualified leads to your business.',
   },
   {
     id: 'expertise-3',
-    name: 'Websites & Web Applications',
+    name: 'Website Design & SEO',
     description:
-      'With years of experience, we can build everything from a simple static site to a complex web application. We can help you build the perfect website for your business or organization.',
+      'Mobile-first websites that not only look stunning but perform exceptionally in search engines. We combine beautiful design with technical SEO expertise to create websites that attract visitors and convert them into customers.',
   },
   {
     id: 'expertise-4',
-    name: 'Full project support',
+    name: 'Content Marketing',
     description:
-      'From start to finish, we are here to help establish your online presence. All services will include some project support after the project is complete. And we can work out a longer support plan if needed.',
+      'Strategic content creation that tells your brand story and engages your target audience. From blog posts and email campaigns to video content and infographics, we create compelling content that drives traffic and builds brand authority.',
   },
   {
     id: 'expertise-5',
-    name: 'Custom Solutions',
+    name: 'Analytics & Reporting',
     description:
-      'Many clients need a custom solution. We love to collaborate and we have a large network of designer and developer friends that we can contract, or even refer you to. If we can not build it, we can help you find someone who can.',
+      'Clear, actionable insights from your digital marketing efforts. We provide comprehensive monthly reports showing exactly how your campaigns are performing, what\'s working, and where opportunities exist for growth and optimization.',
   }
 ];
 ---
+
+<style>
+  .accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .accordion-content.open {
+    max-height: 200px; /* Adjust based on your content */
+  }
+  
+  .accordion-icon {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .accordion-icon.open {
+    transform: rotate(-180deg);
+  }
+</style>
 
 <section class="py-16 sm:py-20">
   <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
     <div class="grid gap-12 lg:grid-cols-3 lg:gap-8">
       <h2 class="text-3xl font-medium tracking-tight sm:text-4xl">Expertise</h2>
       <div class="lg:col-span-2">
-        <dl
-          class="-mt-3"
-          x-data="{ selected: null, toggle(value) { this.selected = this.selected === value ? null : value } }"
-        >
+        <dl class="-mt-3">
           {
             features.map((feature, index) => (
               <div
-                class="rounded-3xl px-4 transition"
-                x-data={`{ id: ${index}, get isOpen() { return this.id === this.selected }, get isNextOpen() { return (this.id + 1) === this.selected } }`}
-                x-bind:class="{ 'bg-primary-500/10 dark:bg-primary-400/10': isOpen }"
+                class="rounded-3xl px-4 transition-colors duration-200"
+                data-accordion-item
+                data-index={index}
               >
-                <dt
-                  class="border-b text-lg transition"
-                  x-cloak
-                  x-bind:class="{ 'border-transparent': isOpen || isNextOpen, 'border-primary-900/10 dark:border-primary-300/10': !(isOpen || isNextOpen) }"
-                >
+                <dt class="border-b border-primary-900/10 dark:border-primary-300/10 text-lg transition-colors duration-200">
                   <button
                     type="button"
                     class="group block w-full py-6 text-left transition focus-visible:outline-none"
                     aria-controls={feature.id}
-                    x-on:click="toggle(id)"
                     aria-expanded="false"
-                    x-bind:aria-expanded="isOpen.toString()"
+                    data-accordion-trigger
                   >
                     <div class="group-focus-visible:outline-primary-950 dark:group-focus-visible:outline-primary-200 flex items-center justify-between rounded-3xl group-focus-visible:outline group-focus-visible:outline-2 group-focus-visible:outline-offset-2">
                       <span class="font-medium">{feature.name}</span>
                       <span class="ml-6 flex h-7 items-center">
                         <svg
-                          class="text-primary-600 dark:text-primary-400 h-6 w-6 rotate-0 transform transition duration-200 ease-in-out"
-                          x-bind:class="{ '-rotate-180': isOpen, 'rotate-0': !isOpen }"
+                          class="accordion-icon text-primary-600 dark:text-primary-400 h-6 w-6"
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 24 24"
                           fill="currentColor"
                           aria-hidden="true"
+                          data-accordion-icon
                         >
                           <path d="M11.9997 13.1714L16.9495 8.22168L18.3637 9.63589L11.9997 15.9999L5.63574 9.63589L7.04996 8.22168L11.9997 13.1714Z" />
                         </svg>
@@ -79,11 +91,17 @@ const features = [
                     </div>
                   </button>
                 </dt>
-                <dd class="pb-6 pr-6" id={feature.id} x-show="isOpen" x-cloak x-collapse>
-                  <p class="text-primary-950/70 dark:text-primary-200/70 text-base">
-                    {feature.description}
-                  </p>
-                </dd>
+                <div 
+                  class="accordion-content"
+                  id={feature.id}
+                  data-accordion-content
+                >
+                  <div class="pb-6 pr-6">
+                    <p class="text-primary-950/70 dark:text-primary-200/70 text-base">
+                      {feature.description}
+                    </p>
+                  </div>
+                </div>
               </div>
             ))
           }
@@ -92,3 +110,47 @@ const features = [
     </div>
   </div>
 </section>
+
+<script>
+  // Smooth accordion functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const accordionItems = document.querySelectorAll('[data-accordion-item]');
+    
+    accordionItems.forEach(item => {
+      const trigger = item.querySelector('[data-accordion-trigger]');
+      const content = item.querySelector('[data-accordion-content]');
+      const icon = item.querySelector('[data-accordion-icon]');
+      
+      trigger.addEventListener('click', () => {
+        const isOpen = content.classList.contains('open');
+        
+        // Close all other accordion items
+        accordionItems.forEach(otherItem => {
+          if (otherItem !== item) {
+            const otherContent = otherItem.querySelector('[data-accordion-content]');
+            const otherIcon = otherItem.querySelector('[data-accordion-icon]');
+            const otherTrigger = otherItem.querySelector('[data-accordion-trigger]');
+            
+            otherContent.classList.remove('open');
+            otherIcon.classList.remove('open');
+            otherTrigger.setAttribute('aria-expanded', 'false');
+            otherItem.classList.remove('bg-primary-500/10', 'dark:bg-primary-400/10');
+          }
+        });
+        
+        // Toggle current item
+        if (isOpen) {
+          content.classList.remove('open');
+          icon.classList.remove('open');
+          trigger.setAttribute('aria-expanded', 'false');
+          item.classList.remove('bg-primary-500/10', 'dark:bg-primary-400/10');
+        } else {
+          content.classList.add('open');
+          icon.classList.add('open');
+          trigger.setAttribute('aria-expanded', 'true');
+          item.classList.add('bg-primary-500/10', 'dark:bg-primary-400/10');
+        }
+      });
+    });
+  });
+</script>
