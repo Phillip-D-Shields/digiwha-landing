@@ -1,138 +1,141 @@
 ---
-const pricing = [
+const services = [
   {
-    name: 'Starter Package',
-    description: 'Perfect for small businesses ready to establish their digital presence',
+    name: 'Social Media Management',
+    description: 'Complete social media strategy and daily management across your chosen platforms',
+    price: '$400 - $800',
     periodicity: '/month',
-    isFlagged: false,
-    price: '$750',
-    originalPrice: null,
-    action: 'Get Started',
     features: [
-      'Social media management (2 platforms)',
-      'Monthly content calendar',
-      'Basic Google Ads setup',
-      'Monthly performance report',
-      'Email support',
-      '3-month minimum commitment'
+      'Content creation & scheduling',
+      'Community management',
+      'Monthly strategy review',
+      'Performance analytics',
+      '1-4 platforms'
     ],
   },
   {
-    name: 'Growth Package',
-    description: 'Comprehensive digital marketing for growing businesses seeking consistent results',
+    name: 'Google Ads Management',
+    description: 'Strategic pay-per-click campaigns with ongoing optimization and reporting',
+    price: '$500 - $1,200',
     periodicity: '/month',
-    isFlagged: true,
-    price: '$1,200',
-    originalPrice: '$1,400',
-    badge: 'Most Popular',
-    action: 'Start Growing',
     features: [
-      'Full social media management',
-      'Google or Facebook Ads management',
-      'SEO-optimized content creation',
-      'Email marketing campaigns',
-      'Website maintenance & updates',
-      'Monthly performance reports',
-      'Phone & email support'
+      'Campaign setup & optimization',
+      'Keyword research & bidding',
+      'Ad copy creation & testing',
+      'Landing page recommendations',
+      'Monthly performance reports'
     ],
   },
   {
-    name: 'Enterprise Package',
-    description: 'Full-service digital marketing solution for established businesses wanting maximum growth',
+    name: 'Meta Ads (Facebook & Instagram)',
+    description: 'Targeted social media advertising campaigns across Facebook and Instagram platforms',
+    price: '$500 - $1,200',
     periodicity: '/month',
-    isFlagged: false,
-    price: '$2,000',
-    originalPrice: null,
-    action: 'Scale Up',
     features: [
-      'Complete digital marketing strategy',
-      'Multi-platform advertising campaigns',
-      'Advanced analytics & conversion tracking',
-      'Custom landing page creation',
-      'Reputation management',
-      'Dedicated account manager',
-      'Bi-weekly strategy calls',
-      '24/7 priority support'
+      'Audience research & targeting',
+      'Creative ad design & copywriting',
+      'Campaign setup & optimization',
+      'A/B testing of ad variations',
+      'Detailed ROI reporting'
     ],
   },
   {
-    name: 'Custom Solutions',
-    description: 'Tailored digital marketing services for unique business needs',
-    periodicity: '',
-    price: 'Let\'s Talk',
-    originalPrice: null,
-    action: 'Contact Us',
+    name: 'Website Design & Build',
+    description: 'Professional, mobile-responsive websites optimized for conversions and search engines',
+    price: '$1,000 - $10,000',
+    periodicity: '/project',
     features: [
-      'Project-based pricing available',
-      'Seasonal campaign management',
-      'Industry-specific strategies',
-      'Multi-location business support',
-      'Enterprise-level reporting',
-      'Custom integrations & automation'
+      '1-6 pages',
+      'Mobile-first responsive design',
+      'SEO optimization',
+      'Content management system',
+      'Single landing page',
+      '6 months of support included',
+      'Domain help'
+    ],
+  },
+  {
+    name: 'SEO Services',
+    description: 'Comprehensive search engine optimization to improve your organic visibility',
+    price: '$600 - $1,500',
+    periodicity: '/month',
+    features: [
+      'Technical SEO audit',
+      'On-page optimization',
+      'Content strategy & creation',
+      'Local SEO optimization',
+      'Monthly ranking reports'
+    ],
+  },
+  {
+    name: 'Email Marketing',
+    description: 'Automated email campaigns and newsletters to nurture leads and retain customers',
+    price: '$250 - $600',
+    periodicity: '/month',
+    features: [
+      'Campaign strategy & setup',
+      'Template design',
+      'List management',
+      'A/B testing',
+      'Performance tracking'
     ],
   }
 ];
+
+const customPackage = {
+  name: 'Custom Package Solutions',
+  description: 'Tailored combinations of services designed specifically for your business needs and budget',
+  benefits: [
+    'Mix and match services',
+    'Discounted rates for multiple services',
+    'Seasonal pricing adjustments available',
+    'Start small and scale up as you grow',
+    'Local business consultation included',
+    'Flexible contract terms'
+  ]
+};
 ---
-
-
 
 <section class="py-16 sm:py-20">
   <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
     <!-- Header -->
     <div class="mx-auto max-w-4xl text-center mb-16">
-      <h2 class="text-3xl font-medium tracking-tight sm:text-6xl">
-        Choose Your Growth Plan
+      <h2 class="text-3xl font-medium tracking-tight sm:text-4xl">
+        Digital Marketing Services
       </h2>
       <p class="mt-6 text-lg leading-8 text-primary-950/70 dark:text-primary-200/70">
-        Transparent pricing designed for Motueka and Tasman region businesses. No hidden fees, no long-term contracts.
+        Choose individual services or let us create a custom package that fits your needs and budget. All prices are tailored for Tasman region businesses.
       </p>
     </div>
 
-    <!-- Main Pricing Grid -->
-    <div class="grid gap-8 lg:grid-cols-3 lg:gap-6 mb-12">
+    <!-- Individual Services Grid -->
+    <div class="grid gap-8 lg:grid-cols-2 lg:gap-6 mb-16">
       {
-        pricing.slice(0, 3).map((item) => (
-          <div
-            class:list={[
-              'relative flex flex-col gap-8 rounded-3xl p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl',
-              item.isFlagged && 'bg-primary-500/10 dark:bg-primary-400/10 ring-2 ring-primary-500/20',
-              !item.isFlagged && 'ring-1 ring-primary-900/10 dark:ring-primary-300/10'
-            ]}
-          >
-            {item.badge && (
-              <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-primary-600 dark:bg-primary-400 text-white dark:text-primary-950 px-4 py-1 rounded-full text-sm font-medium">
-                {item.badge}
-              </div>
-            )}
-            
+        services.map((service) => (
+          <div class="relative flex flex-col gap-6 rounded-3xl p-8 ring-1 ring-primary-900/10 dark:ring-primary-300/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
             <div class="flex-1">
-              <h3 class="text-xl font-medium">
-                {item.name}
+              <h3 class="text-xl font-medium mb-2">
+                {service.name}
               </h3>
               
-              <div class="mt-4 flex items-baseline gap-2">
-                <span class="text-4xl font-medium tracking-tight">
-                  {item.price}
+              <div class="flex items-baseline gap-2 mb-4">
+                <span class="text-3xl font-medium tracking-tight">
+                  {service.price}
                 </span>
-                {item.originalPrice && (
-                  <span class="text-lg line-through text-primary-950/50 dark:text-primary-200/50">
-                    {item.originalPrice}
-                  </span>
-                )}
-                <span class="text-primary-950/70 dark:text-primary-200/70 ml-1 text-sm font-medium">
-                  {item.periodicity}
+                <span class="text-primary-950/70 dark:text-primary-200/70 text-sm font-medium">
+                  {service.periodicity}
                 </span>
               </div>
               
-              <p class="text-primary-950/70 dark:text-primary-200/70 mt-6">
-                {item.description}
+              <p class="text-primary-950/70 dark:text-primary-200/70 mb-6">
+                {service.description}
               </p>
 
-              <ul role="list" class="mt-6 space-y-6">
-                {item.features.map((feature) => (
+              <ul role="list" class="space-y-3">
+                {service.features.map((feature) => (
                   <li class="flex gap-3">
                     <svg
-                      class="text-primary-600 dark:text-primary-400 h-6 w-6 flex-shrink-0"
+                      class="text-primary-600 dark:text-primary-400 h-5 w-5 flex-shrink-0 mt-0.5"
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
                       fill="currentColor"
@@ -140,73 +143,68 @@ const pricing = [
                     >
                       <path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM11.0026 16L18.0737 8.92893L16.6595 7.51472L11.0026 13.1716L8.17421 10.3431L6.75999 11.7574L11.0026 16Z" />
                     </svg>
-                    <span>{feature}</span>
+                    <span class="text-sm">{feature}</span>
                   </li>
                 ))}
               </ul>
             </div>
-            
-            <a
-              href="#"
-              class="bg-primary-600 dark:bg-primary-400 hover:bg-primary-700 dark:hover:bg-primary-300 focus-visible:outline-primary-600 dark:focus-visible:outline-primary-400 dark:text-primary-950 inline-flex w-full items-center justify-center rounded-full border border-transparent px-5 py-3 text-base font-medium text-white transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
-            >
-              {item.action}
-            </a>
           </div>
         ))
       }
     </div>
 
-    <!-- Custom Solutions Card -->
-    <div class="max-w-2xl mx-auto">
-      {
-        pricing.slice(3).map((item) => (
-          <div class="relative flex flex-col gap-8 rounded-3xl p-8 ring-1 ring-primary-900/10 dark:ring-primary-300/10 transition-all duration-300 hover:shadow-lg text-center">
-            <div class="flex-1">
-              <h3 class="text-3xl font-medium">
-                {item.name}
-              </h3>
-              
-              <div class="mt-4">
-                <span class="text-4xl sm:text-5xl font-medium tracking-tight">
-                  {item.price}
-                </span>
-              </div>
-              
-              <p class="text-primary-950/70 dark:text-primary-200/70 mt-6">
-                {item.description}
-              </p>
-
-              <ul role="list" class="mt-6 space-y-6 max-w-md mx-auto">
-                {item.features.map((feature) => (
-                  <li class="flex gap-3">
-                    <svg
-                      class="text-primary-600 dark:text-primary-400 h-6 w-6 flex-shrink-0"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      aria-hidden="true"
-                    >
-                      <path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM11.0026 16L18.0737 8.92893L16.6595 7.51472L11.0026 13.1716L8.17421 10.3431L6.75999 11.7574L11.0026 16Z" />
-                    </svg>
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            
-            <div class="max-w-xs mx-auto w-full">
-              <a
-                href="#"
-                class="bg-primary-600 dark:bg-primary-400 hover:bg-primary-700 dark:hover:bg-primary-300 focus-visible:outline-primary-600 dark:focus-visible:outline-primary-400 dark:text-primary-950 inline-flex w-full items-center justify-center rounded-full border border-transparent px-5 py-3 text-base font-medium text-white transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+    <!-- Custom Package Highlight -->
+    <div class="bg-primary-500/10 dark:bg-primary-400/10 rounded-3xl p-8 lg:p-12">
+      <div class="mx-auto max-w-4xl text-center">
+        <h3 class="text-2xl font-medium mb-4">
+          {customPackage.name}
+        </h3>
+        <p class="text-lg text-primary-950/70 dark:text-primary-200/70 mb-8 max-w-2xl mx-auto">
+          {customPackage.description}
+        </p>
+        
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 mb-8 max-w-4xl mx-auto">
+          {customPackage.benefits.map((benefit) => (
+            <div class="flex gap-3 items-center">
+              <svg
+                class="text-primary-600 dark:text-primary-400 h-5 w-5 flex-shrink-0"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
               >
-                {item.action}
-              </a>
+                <path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM11.0026 16L18.0737 8.92893L16.6595 7.51472L11.0026 13.1716L8.17421 10.3431L6.75999 11.7574L11.0026 16Z" />
+              </svg>
+              <span class="text-sm font-medium">{benefit}</span>
             </div>
-          </div>
-        ))
-      }
+          ))}
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <!-- <a
+            href="#"
+            class="bg-primary-600 dark:bg-primary-400 hover:bg-primary-700 dark:hover:bg-primary-300 focus-visible:outline-primary-600 dark:focus-visible:outline-primary-400 dark:text-primary-950 inline-flex items-center justify-center rounded-full border border-transparent px-8 py-3 text-base font-medium text-white transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+          >
+            Get Custom Quote
+          </a> -->
+          <a
+            href="#"
+            class="border border-primary-600 dark:border-primary-400 text-primary-600 dark:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/10 inline-flex items-center justify-center rounded-full px-8 py-3 text-base font-medium transition"
+          >
+            Schedule Consultation
+          </a>
+        </div>
+      </div>
     </div>
 
+    <!-- Bottom Note -->
+    <!-- <div class="mt-12 text-center">
+      <p class="text-primary-950/70 dark:text-primary-200/70 text-sm">
+        All services include local Motueka consultation and seasonal pricing flexibility. 
+        <a href="#contact" class="font-semibold text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300">
+          Ready to start? Let's discuss your needs →
+        </a>
+      </p>
+    </div> -->
   </div>
 </section>
