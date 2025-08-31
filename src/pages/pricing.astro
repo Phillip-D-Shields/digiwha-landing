@@ -2,10 +2,23 @@
 import PricingTable from "../components/pricing/PricingTable.astro";
 import Layout from "../layouts/Layout.astro";
 ---
-
-<Layout
-  description="Find the pricing plan that best fits your needs. Plans include seats, projects, support and more"
-  title="Pricing · Digiwha Studios"
->
+<SEO
+  title="Digital Marketing Services Motueka | Digiwha Studios"
+  description="Expert digital marketing services in Motueka, Tasman. Social media management, website design, PPC ads, and SEO for local businesses."
+  canonical="https://studio.digiwha.co.nz"
+  openGraph={{
+    basic: {
+      title: "Digital Marketing Services Motueka",
+      type: "website",
+      image: "/assets/tdigiwha_logo.png",
+      url: "https://studio.digiwha.co.nz"
+    },
+    optional: {
+      description: "Expert digital marketing services in Motueka, and the Tasman region. Social media management, website design, PPC ads, and SEO for local businesses.",
+      siteName: "Digiwha Studios"
+    }
+  }}
+/>
+<Layout>
   <PricingTable />
 </Layout>

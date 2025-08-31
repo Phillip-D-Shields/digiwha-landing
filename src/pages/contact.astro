@@ -2,12 +2,26 @@
 import ContactForm from '../components/contact/ContactForm.astro';
 import ContactInfo from '../components/contact/ContactInfo.astro';
 import Layout from '../layouts/Layout.astro';
+import { SEO } from 'astro-seo';
 ---
-
-<Layout
-  description="Contact our team to learn more about how we can help you."
-  title="Contact · Digiwha Studios"
->
+<SEO
+  title="Contact Us | Digiwha Studios"
+  description="Contact our digital marketing team in Motueka, Tasman. Social media management, website design, PPC ads, and SEO for local businesses."
+  canonical="https://studio.digiwha.co.nz/contact"
+  openGraph={{
+    basic: {
+      title: "Digital Marketing Services Motueka",
+      type: "website",
+      image: "/assets/tdigiwha_logo.png",
+      url: "https://studio.digiwha.co.nz/contact"
+    },
+    optional: {
+      description: "Expert digital marketing services in Motueka, and the Tasman region. Social media management, website design, PPC ads, and SEO for local businesses.",
+      siteName: "Digiwha Studios"
+    }
+  }}
+/>
+<Layout>
   <ContactInfo />
   <ContactForm />
 </Layout>

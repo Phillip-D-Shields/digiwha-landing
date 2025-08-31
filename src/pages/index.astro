@@ -6,12 +6,27 @@ import Hero from '../components/home/Hero.astro';
 import Services from '../components/home/Services.astro';
 // import Testimonials from '../components/home/Testimonials.astro';
 import Layout from '../layouts/Layout.astro';
+import { SEO } from 'astro-seo';
 ---
+<SEO
+  title="Digital Marketing Services Motueka | Digiwha Studios"
+  description="Expert digital marketing services in Motueka, Tasman. Social media management, website design, PPC ads, and SEO for local businesses."
+  canonical="https://studio.digiwha.co.nz"
+  openGraph={{
+    basic: {
+      title: "Digital Marketing Services Motueka",
+      type: "website",
+      image: "/assets/tdigiwha_logo.png",
+      url: "https://studio.digiwha.co.nz"
+    },
+    optional: {
+      description: "Expert digital marketing services in Motueka, and the Tasman region. Social media management, website design, PPC ads, and SEO for local businesses.",
+      siteName: "Digiwha Studios"
+    }
+  }}
+/>
 
-<Layout
-  description="Digiwha Studios is a digital agency that specializes in web design, development, and even some marketing."
-  title="Digiwha Studios"
->
+<Layout>
   <Hero />
   <Services />
   <Expertise />

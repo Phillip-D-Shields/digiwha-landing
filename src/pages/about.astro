@@ -1,15 +1,27 @@
 ---
-import Heading from '../components/about/Heading.astro';
 import Mission from '../components/about/Mission.astro';
 import Team from '../components/about/Team.astro';
 import Layout from '../layouts/Layout.astro';
+import { SEO } from 'astro-seo';
 ---
-
-<Layout
-  description="We make good things grow"
-  title="Digiwha Studios"
->
-  <!-- <Heading /> -->
+<SEO
+  title="About | Digiwha Studios"
+  description="About our team at Digiwha Studios. Social media management, website design, PPC ads, and SEO for local businesses."
+  canonical="https://studio.digiwha.co.nz/about"
+  openGraph={{
+    basic: {
+      title: "Digital Marketing Services Motueka",
+      type: "website",
+      image: "/assets/tdigiwha_logo.png",
+      url: "https://studio.digiwha.co.nz/about"
+    },
+    optional: {
+      description: "Digital marketing services in Motueka, and the Tasman region. Social media management, website design, PPC ads, and SEO for local businesses.",
+      siteName: "Digiwha Studios"
+    }
+  }}
+/>
+<Layout>
   <Mission />
   <Team /> 
 </Layout>

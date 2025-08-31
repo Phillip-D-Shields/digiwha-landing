@@ -6,12 +6,6 @@ import Footer from "../components/layout/Footer.astro";
 import Header from "../components/layout/Header.astro";
 import GoogleTagManager from "../components/layout/GoogleTagManager.astro";
 
-interface Props {
-  description: string;
-  title: string;
-}
-
-const { description, title } = Astro.props;
 const GTM_ID = import.meta.env.PUBLIC_GTM_ID;
 ---
 
@@ -25,8 +19,6 @@ const GTM_ID = import.meta.env.PUBLIC_GTM_ID;
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="description" content={description} />
-    <title>{title}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
