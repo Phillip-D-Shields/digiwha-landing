@@ -1,156 +1,39 @@
 ---
+import FeaturesTable from "./FeaturesTable.astro"
+
 const features = [
   {
     id: 'expertise-1',
     name: 'Social Media Management',
     description:
-      'Comprehensive social media strategy and management across all major platforms. We create engaging content, manage your community, run targeted ad campaigns, and provide detailed analytics to grow your online presence and drive real business results.',
+      'Engaging content, community management, targeted ads, and analytics to grow your brand online.',
   },
   {
     id: 'expertise-2',
-    name: 'Google Ads & PPC',
+    name: 'Ads & PPC',
     description:
-      'Strategic pay-per-click advertising campaigns designed to maximize your ROI. From keyword research and ad creation to landing page optimization and conversion tracking, we ensure every dollar spent drives qualified leads to your business.',
+      'ROI-driven campaigns with keyword research, optimized ads, and conversion tracking.',
   },
   {
     id: 'expertise-3',
     name: 'Website Design & SEO',
     description:
-      'Mobile-first websites that not only look stunning but perform exceptionally in search engines. We combine beautiful design with technical SEO expertise to create websites that attract visitors and convert them into customers.',
+      'Mobile-first websites with SEO built in—designed to attract visitors and convert customers.',
   },
   {
     id: 'expertise-4',
     name: 'Content Marketing',
     description:
-      'Strategic content creation that tells your brand story and engages your target audience. From blog posts and email campaigns to video content and infographics, we create compelling content that drives traffic and builds brand authority.',
+      'Blogs, emails, videos, and more—content that tells your story and builds brand authority.',
   },
   {
     id: 'expertise-5',
     name: 'Analytics & Reporting',
     description:
-      'Clear, actionable insights from your digital marketing efforts. We provide comprehensive monthly reports showing exactly how your campaigns are performing, what\'s working, and where opportunities exist for growth and optimization.',
+      'Clear reports with actionable insights to track performance and guide growth.',
   }
 ];
+
 ---
 
-<style>
-  .accordion-content {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  
-  .accordion-content.open {
-    max-height: 200px; /* Adjust based on your content */
-  }
-  
-  .accordion-icon {
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  
-  .accordion-icon.open {
-    transform: rotate(-180deg);
-  }
-</style>
-
-<section class="py-16 sm:py-20">
-  <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-    <div class="grid gap-12 lg:grid-cols-3 lg:gap-8">
-      <h2 class="text-3xl font-medium tracking-tight sm:text-4xl">Expertise</h2>
-      <div class="lg:col-span-2">
-        <dl class="-mt-3">
-          {
-            features.map((feature, index) => (
-              <div
-                class="rounded-3xl px-4 transition-colors duration-200"
-                data-accordion-item
-                data-index={index}
-              >
-                <dt class="border-b border-primary-900/10 dark:border-primary-300/10 text-lg transition-colors duration-200">
-                  <button
-                    type="button"
-                    class="group block w-full py-6 text-left transition focus-visible:outline-none"
-                    aria-controls={feature.id}
-                    aria-expanded="false"
-                    data-accordion-trigger
-                  >
-                    <div class="group-focus-visible:outline-primary-950 dark:group-focus-visible:outline-primary-200 flex items-center justify-between rounded-3xl group-focus-visible:outline group-focus-visible:outline-2 group-focus-visible:outline-offset-2">
-                      <span class="font-medium">{feature.name}</span>
-                      <span class="ml-6 flex h-7 items-center">
-                        <svg
-                          class="accordion-icon text-primary-600 dark:text-primary-400 h-6 w-6"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="currentColor"
-                          aria-hidden="true"
-                          data-accordion-icon
-                        >
-                          <path d="M11.9997 13.1714L16.9495 8.22168L18.3637 9.63589L11.9997 15.9999L5.63574 9.63589L7.04996 8.22168L11.9997 13.1714Z" />
-                        </svg>
-                      </span>
-                    </div>
-                  </button>
-                </dt>
-                <div 
-                  class="accordion-content"
-                  id={feature.id}
-                  data-accordion-content
-                >
-                  <div class="pb-6 pr-6">
-                    <p class="text-primary-950/70 dark:text-primary-200/70 text-base">
-                      {feature.description}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ))
-          }
-        </dl>
-      </div>
-    </div>
-  </div>
-</section>
-
-<script>
-  // Smooth accordion functionality
-  document.addEventListener('DOMContentLoaded', function() {
-    const accordionItems = document.querySelectorAll('[data-accordion-item]');
-    
-    accordionItems.forEach(item => {
-      const trigger = item.querySelector('[data-accordion-trigger]');
-      const content = item.querySelector('[data-accordion-content]');
-      const icon = item.querySelector('[data-accordion-icon]');
-      
-      trigger.addEventListener('click', () => {
-        const isOpen = content.classList.contains('open');
-        
-        // Close all other accordion items
-        accordionItems.forEach(otherItem => {
-          if (otherItem !== item) {
-            const otherContent = otherItem.querySelector('[data-accordion-content]');
-            const otherIcon = otherItem.querySelector('[data-accordion-icon]');
-            const otherTrigger = otherItem.querySelector('[data-accordion-trigger]');
-            
-            otherContent.classList.remove('open');
-            otherIcon.classList.remove('open');
-            otherTrigger.setAttribute('aria-expanded', 'false');
-            otherItem.classList.remove('bg-primary-500/10', 'dark:bg-primary-400/10');
-          }
-        });
-        
-        // Toggle current item
-        if (isOpen) {
-          content.classList.remove('open');
-          icon.classList.remove('open');
-          trigger.setAttribute('aria-expanded', 'false');
-          item.classList.remove('bg-primary-500/10', 'dark:bg-primary-400/10');
-        } else {
-          content.classList.add('open');
-          icon.classList.add('open');
-          trigger.setAttribute('aria-expanded', 'true');
-          item.classList.add('bg-primary-500/10', 'dark:bg-primary-400/10');
-        }
-      });
-    });
-  });
-</script>
+<FeaturesTable features={features} />

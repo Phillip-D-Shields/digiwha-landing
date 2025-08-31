@@ -1,16 +1,19 @@
 ---
 const team = [
   {
-    name: 'Phillip Shields',
-    image: 'https://placehold.co/400',
-    job: 'Head of Technology',
-    description: 'some lorem about we awesome sauce, with a link to personal website.',
+    name: "Phillip Shields",
+    image:
+      "https://avatars.githubusercontent.com/u/28024295?s=400&u=36bf6279c8188ab74b05810367a7708e5b289ac2&v=4",
+    job: "Head of Technology",
+    description:
+      "Phill is a full-stack developer with five years of experience, working across a wide range of IT projects. He specializes in website development, SEO, and configuring Google and Facebook advertising platforms. Based in Motueka, he is also a proud volunteer with the Motueka Fire Brigade.",
   },
   {
-    name: 'Julie Cedarman',
-    image: 'https://placehold.co/400',
-    job: 'Head of Creative',
-    description: 'some lorem about we awesome sauce, with a link to personal website.',
+    name: "Julie Cedarman",
+    image: "assets/j_cedarman.png",
+    job: "Head of Creative",
+    description:
+      "Julie is highly skilled in creative work and social media, bringing extensive administrative experience and expertise in social media management and email marketing. Based in Riwaka, she also has a passion for wildlife rehabilitation, particularly caring for injured or displaced ducks.",
   },
 ];
 ---
@@ -18,17 +21,34 @@ const team = [
 <section class="py-16 sm:py-20">
   <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
     <div class="sm:space-8 space-y-12">
-      <h2 class="text-3xl font-medium tracking-tight sm:text-4xl">Meet our team</h2>
-      <ul role="list" class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      <h2 class="text-3xl font-medium tracking-tight sm:text-4xl">
+        Meet our team
+      </h2>
+      <ul
+        role="list"
+        class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3"
+      >
         {
           team.map((item) => (
             <li class="border-primary-900/10 dark:border-primary-300/10 rounded-3xl border px-6 py-8">
               <div class="space-y-6">
-                <img class="mx-auto h-auto w-16 rounded-full" src={item.image} alt={item.name} />
-                <div class="text-center">
+               
+                  <div>
+                    <img
+                      class="mx-auto size-48 rounded-lg"
+                      src={item.image}
+                      alt={item.name}
+                    />
+                  </div>
+              
+                <div class="">
                   <h3 class="text-lg font-medium">{item.name}</h3>
-                  <p class="text-primary-950/70 dark:text-primary-200/70 text-base">{item.job}</p>
-                  <p class="text-primary-950/70 dark:text-primary-200/70 text-sm pt-8">{item.description}</p>
+                  <p class="text-primary-950/70 dark:text-primary-200/70 text-base">
+                    {item.job}
+                  </p>
+                  <p class="text-primary-950/70 dark:text-primary-200/70 text-sm pt-8">
+                    {item.description}
+                  </p>
                 </div>
               </div>
             </li>
